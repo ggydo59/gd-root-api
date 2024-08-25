@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "gd-root-api"
+version = "0.1.0"
+description = "root project for create product"
+authors = ["gyeongdo"]
+license = "Apache 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+django = ">=3.2.4,<3.3"
+djangorestframework = ">=3.12.4,<3.13"
+
+
+[tool.poetry.dev-dependencies]
+python = ">=3.9"
+django = ">=3.2.4,<3.3"
+djangorestframework = ">=3.12.4,<3.13"
+flake8 = ">=3.9.2,<3.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
