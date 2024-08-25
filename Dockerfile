@@ -14,7 +14,7 @@ RUN python -m venv /py && \
     source /py/bin/activate && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install --no-cache-dir poetry && \
-    if [ $DEV = "true"]; \
+    if [ $DEV = "true" ]; \
         then poetry install --no-root ; \
     fi && \
     poetry lock --no-update && \
