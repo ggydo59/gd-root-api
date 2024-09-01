@@ -18,8 +18,8 @@ ARG DEV=false
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install --no-cache-dir poetry && \
-    if [ "$DEV" = "true" ]; then poetry install --no-root; fi && \
-    poetry install --no-root --no-dev && \
+    if [ "$DEV" = "true" ]; then /py/bin/poetry install --no-root; fi && \
+    /py/bin/poetry install --no-root --no-dev && \
     adduser \
         --disabled-password \
         --no-create-home \
