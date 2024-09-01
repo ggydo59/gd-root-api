@@ -4,9 +4,9 @@ LABEL maintainer="gyeongdo"
 ENV PYTHONUNBUFFERED=1
 
 # 필요한 파일 복사
+COPY ./requirements.txt /tmp/requirements.txt
+COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./app /app
-COPY poetry.lock /app/poetry.lock
-COPY pyproject.toml /app/pyproject.toml
 
 WORKDIR /app
 EXPOSE 8000
@@ -17,9 +17,11 @@ ARG DEV=false
 # 필요한 패키지 설치 및 사용자 추가
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
-    /py/bin/pip install --no-cache-dir poetry && \
-    if [ "$DEV" = "true" ]; then /py/bin/poetry install --no-root; fi && \
-    /py/bin/poetry install --no-root --no-dev && \
+    /py/bin/pip install -r /tmp/requirements.txt && \
+    if [ $DEV = "true" ]; \
+        then  /py/bin/pip install -r /tmp/requirements.dev.txt ; \
+    fi && \
+    rm -rf /tmp && \
     adduser \
         --disabled-password \
         --no-create-home \
