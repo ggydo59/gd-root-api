@@ -3,7 +3,6 @@ Calculator functions
 """
 
 
-
 def add(x, y):
     """_summary_
 
