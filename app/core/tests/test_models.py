@@ -47,14 +47,15 @@ class ModelTests(TestCase):
             get_user_model().objects.create_user('', 'test123')
 
 
-    def test_create_supersuer(self):
-        """Test creating a supersuer"""
+    def test_create_superuser(self):
+        """Test creating a superuser"""
         user = get_user_model().objects.create_superuser(
             'test@example.com',
             'test123',
         )
 
         self.assertTrue(user.is_superuser)
+        self.assertTrue(user.is_staff)
 
     def test_create_recipe(self):
         """Test creating a recipe is successful"""
@@ -87,9 +88,9 @@ class ModelTests(TestCase):
 
     @patch('core.models.uuid.uuid4')
     def test_recipe_file_name_uuid(self, mock_uuid):
-        """Tset gerating image path."""
+        """Test generating image path."""
         uuid = 'test-uuid'
-        mock_uuid.return_value =uuid
+        mock_uuid.return_value = uuid
         file_path = models.recipe_image_file_path(None, 'example.jpg')
 
         self.assertEqual(file_path, f'uploads/recipe/{uuid}.jpg')
