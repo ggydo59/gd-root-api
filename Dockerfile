@@ -3,7 +3,7 @@ LABEL maintainer="gyeongdo"
 
 ENV PYTHONUNBUFFERED 1
 
-# 필요한 파일 복사
+# 필요한 파일 복사 
 COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./app /app
